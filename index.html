@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ludo Game</title>
+    <style>
+     
+        body{
+            background-image: url("R\ \(1\).jpg");
+            background-size: cover;
+        }
+        .head{
+            margin-top:2%;
+            margin-bottom: 10px;
+         } 
+        .board{
+            border-left:5px black solid;
+            border-top: 5px gray solid;
+            border-right:5px black solid;
+            border-bottom: 5px gray solid;
+            width:500px;
+           margin-left: 30%;
+        }img{
+            margin-bottom: -4px;
+            
+        }
+        table tr td{
+            width:15px;
+            height:25px;
+            background-color: white;
+            max-width: 15px;
+            max-height:25px;
+            
+        }
+        table{
+            width:500px;
+            border-left: 5px gray solid;
+            border-top:5px black solid;
+            border-right:5px  gray solid;
+            border-bottom: 5px  black solid;
+
+            
+        }
+        table ,td{
+            border-collapse: collapse;
+        }
+        .red{
+            background-color:rgb(233, 16, 16);
+        }.yellow{
+            background-color:yellow;
+        }.blue{
+            background-color: rgb(184, 35, 179);
+        }
+        .green{
+            background-color: rgb(23, 225, 191);
+        }
+        .triangle{
+            width:0;
+            height:0;
+            border-bottom: 40px solid rgb(184, 35, 179);
+            border-left: 47px solid rgb(233, 16, 16);
+            border-right: 47px solid rgb(23, 225, 191);
+            border-top: 40px solid yellow;
+           
+        }.redhouse{
+            background-image: url("R.jpg");
+            background-size: cover;
+            
+        }.boxred div{
+            width:20px;
+            height:20px;
+            border-radius: 20px;
+            background-color:rgb(233, 16, 16);
+            border:black 2px solid;
+            box-shadow: black 2px 4px 1px;
+        }.boxred{
+            margin: auto auto;
+            width:70px;
+            padding:10px;
+            border:white 3px solid;
+            border-radius: 20px;
+            background: rgb(219, 39, 39);
+            display: flex;
+            flex-wrap: wrap;
+            gap:1em;
+        }
+        .greenhouse{
+            background-image: url("thumbbig-1334614.webp");
+            background-size: cover;
+            
+        }.boxgreen div{
+            width:20px;
+            height:20px;
+            border-radius: 20px;
+            background-color:rgb(23, 225, 191);
+            border:black 2px solid;
+            box-shadow: black 2px 4px 1px;
+        }.boxgreen{
+            margin: auto auto;
+            width:70px;
+            padding:10px;
+            border:white 3px solid;
+            border-radius: 20px;
+            background: rgb(59, 148, 132);
+            display: flex;
+            flex-wrap: wrap;
+            gap:1em;
+        }
+        .bluehouse{
+            background-image: url("R (4).jpg");
+            background-size: cover;
+            
+        }.boxblue div{
+            width:20px;
+            height:20px;
+            border-radius: 20px;
+            background-color:rgb(184, 35, 179);
+            border:black 2px solid;
+            box-shadow: black 2px 4px 1px;
+        }.boxblue{
+            margin: auto auto;
+            width:70px;
+            padding:10px;
+            border:white 3px solid;
+            border-radius: 20px;
+            background: rgb(154, 73, 152);
+            display: flex;
+            flex-wrap: wrap;
+            gap:1em;
+        }
+        .yellowhouse{
+            background-image: url("thumbbig-1333364.webp");
+            background-size: cover;
+            
+        }.boxyellow div,.player div{
+            width:20px;
+            height:20px;
+            border-radius: 20px;
+            background-color:yellow;
+            border:black 2px solid;
+            box-shadow: black 2px 4px 1px;
+        }.boxyellow{
+            margin: auto auto;
+            width:70px;
+            padding:10px;
+            border:white 3px solid;
+            border-radius: 20px;
+            background: rgb(221, 221, 21);
+            display: flex;
+            flex-wrap: wrap;
+            gap:1em;
+        }.dice{
+            width:70px;
+            height:70px;
+            background-color: pink;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }.top p{
+            display: block;
+            color:rgb(16, 8, 14);
+            text-transform: capitalize;
+        }.top{
+            display: flex;
+            align-items: center;
+            margin-left: 45%;
+            margin-bottom: 20px;
+        }.dicebox{
+            border: orange 2px solid;
+            width:70px;
+            padding:0.2px 5px;
+            height:70px;
+            border-radius: 10px;
+            border-right: none;
+            background-image: linear-gradient(rgb(246, 141, 35),rgb(199, 18, 231),rgb(15, 224, 231))
+        }.player{
+            border: orange 2px solid;
+            border-left:none;
+            padding:15px;
+            background-image: linear-gradient(rgb(246, 141, 35),rgb(199, 18, 231),rgb(15, 224, 231))
+        }
+    </style>
+</head>
+<body>
+    <div class="head" style="text-align:center">
+        <i><u><b>Ludo Board Demo</b></u></i>
+    </div>
+    <div class="top">
+        <div class="dicebox">
+            <div id="dice" class="dice">
+                
+            </div>
+        </div>
+        <div class="player">
+            <div></div>
+        </div>
+        <p>Click to roll the Dice</p>
+    </div>
+   
+    <div class="board">
+        <table border="1">
+            <tr>
+                <td class="redhouse" rowspan="6" colspan="6" >
+                    <div class="user" style="text-align: center; background-color: rgb(219, 39, 39) ;color:white;margin-top: 2px;"><p><b>Player 1</b></p></div>
+                    <div class="boxred">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </td>
+                <td>  
+                </td>
+                <td> 
+                </td>
+                <td> 
+                </td>
+                <td class="yellowhouse" rowspan="6" colspan="6">
+                    <div class="user" style="text-align: center; background-color: rgb(221, 221, 21);color:white;margin-top: 2px;"><p><b>Player 2</b></p></div>
+                    <div class="boxyellow">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="yellow"></td>
+                <td class="yellow"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="yellow"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="yellow"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="yellow"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="yellow"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="red"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="width:fit-content" colspan="3" rowspan="3">
+                    <div class="triangle"></div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="red"></td>
+                <td class="red"></td>
+                <td class="red"></td>
+                <td class="red"></td>
+                <td class="red"></td>
+                
+                <td class="green"></td>
+                <td class="green"></td>
+                <td class="green"></td>
+                <td class="green"></td>
+                <td class="green"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="green"></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td class="bluehouse" rowspan="6" colspan="6" >
+                    <div class="user" style="text-align: center; background-color: rgb(154, 73, 152);color:white;margin-top: 2px;"><p><b>Player 3</b></p></div>
+                    <div class="boxblue">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </td>
+                <td>  
+                </td>
+                <td class="blue"> 
+                </td>
+                <td> 
+                </td>
+                <td class="greenhouse" rowspan="6" colspan="6">
+                    <div class="user" style="text-align: center; background-color: rgb(59, 148, 132);color:white;margin-top: 2px;"><p><b>Player 4</b></p></div>
+                    <div class="boxgreen">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="blue"></td>
+                <td class="blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var dice=document.getElementById("dice");
+        dice.onclick=function(){
+            var number=math.random(1,6);
+            alert(number);
+        }
+    </script>
+</body>
+</html>
